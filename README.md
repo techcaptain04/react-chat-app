@@ -14,4 +14,3 @@ JavaScript chat app. Using React.js, Socket.io and Node.js. Layout using Materia
 - users from one company cannot see/chat with users from other company
 - first 4 users from company A and rest 4 belongs to company B
 - default chatroom/channel where all users of a company is listening
-- handled multiple tab for same user

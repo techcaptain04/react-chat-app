@@ -31,11 +31,10 @@ io.on(IdSocketKey.connection, (client: any) => {
         } else {
             clients[company_id][user_id] = [client];
         }
-        // Join default chatRoom
+        
         const defaultRoomName = 'channel'+company_id;
         client.join(defaultRoomName);
 
-        // Announce new user connected
         const onlineUserIdList = Object.keys(clients[company_id]);
         for(let user in clients[company_id]) {
             clients[company_id][user].forEach((clientSession: any) => {
@@ -49,12 +48,11 @@ io.on(IdSocketKey.connection, (client: any) => {
     });
 
     client.on('disconnecting', (reason: any) => {
-        // console.log("DISCONNECTING, ", reason)
+        
     });
 
     client.on(IdSocketKey.channelBroadcast, (payload: any) => {
-        // console.log('CHANNEL BROADCAST', io.sockets.adapter.rooms[payload.channelId]);
-        // io.sockets.adapter.rooms[payload.channelId].length {to get how many in the room live}
+        
         if(!!io.sockets.adapter.rooms[payload.channelId]) {
             io.to(payload.channelId).emit(IdSocketKey.channelBroadcast, payload);
         }
@@ -79,7 +77,6 @@ io.on(IdSocketKey.connection, (client: any) => {
         }
     
         if(sourceId && clients[companyId][sourceId]) {
-            // Echo back
             clients[companyId][sourceId].forEach((cli: any) => {
                 cli.emit(IdSocketKey.message, {...msg, selfEcho: true});
             });
@@ -95,11 +92,9 @@ io.on(IdSocketKey.connection, (client: any) => {
         const user_id = client['myId'].id;
         const company_id = client['myId'].companyId;
 
-        // Leave chat rooms
         const defaultRoomName = 'channel'+company_id;
         client.leave(defaultRoomName);
 
-        // Remove from clients object
         if (!clients[company_id] || !clients[company_id][user_id]) {
             return
         }
@@ -121,7 +116,6 @@ io.on(IdSocketKey.connection, (client: any) => {
         }
 
         if(clients[company_id]) {
-            // Announce new user connected
             const onlineUserIdList = Object.keys(clients[company_id]);
             for(let user in clients[company_id]) {
                 clients[company_id][user].forEach((clientSession: any) => {

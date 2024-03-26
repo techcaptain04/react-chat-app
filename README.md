@@ -7,6 +7,7 @@ JavaScript chat app. Using React.js, Socket.io and Node.js. Layout using Materia
 - `npm install` then-> `npm start` (from /server and /app dirs)
 
 ## Summary
+
 - shows online users
 - all users sorted based on online status
 - default set of users to signin

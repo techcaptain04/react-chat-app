@@ -1,6 +1,6 @@
 # Simple chat (with chat room)
 
-JavaScript chat app. Using React.js, Socket.io and Node.js. Layout using Material UI. No database, everything readonly.
+JavaScript chat app. Using React.js, Socket.io and Node.js. Layout using Material UI. No database.
 
 ## Setup
 
